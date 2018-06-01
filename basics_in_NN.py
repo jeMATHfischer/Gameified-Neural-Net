@@ -42,7 +42,7 @@ for p in range(100):
     synapse_0 = 2*np.random.random((dim_in,hidden_dim)) -1 
     synapse_1 = 2*np.random.random((hidden_dim, 1)) - 1
     
-    for l in range(1000):        
+    for l in range(10000):        
         for i in range(len(y)):    
             layer_1 = nonlinearity_1(np.dot(x[i,:], synapse_0))
             layer_2 = nonlinearity_1(np.dot(layer_1, synapse_1))
