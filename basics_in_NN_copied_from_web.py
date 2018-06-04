@@ -22,16 +22,19 @@ x = np.array([[0,0,1],
               [1,0,1],
               [1,1,1]])
 y = np.array([[0],
+              [0],
               [1],
-              [1],
-              [0]])
+              [1]])
+    
+test = np.array([[1,0,0],[0,0,0],[1,1,0], [0,1,0]])
+
     
 #for alpha in alphas:
  #   print( "\nTraining With Alpha:" + str(alpha))
 
-alpha = 0.01
+alpha = 2
 
-np.random.seed(1)
+np.random.seed(41)
 # randomly initialize our weights with mean 0
 #synapse_0 = 2*np.random.random((3,2)) - 1
 #synapse_1 = 2*np.random.random((2,1)) - 1
@@ -55,10 +58,16 @@ for p in range(100):
         synapse_1 -= alpha * (layer_1.T.dot(layer_2_delta))
         synapse_0 -= alpha * (layer_0.T.dot(layer_1_delta))
         
-    layer_1_test = sigmoid(np.dot(np.array([1,0,0]), synapse_0))
+    np.random.shuffle(test)
+    layer_1_test = sigmoid(np.dot(test[0,:], synapse_0))
     layer_2_test = sigmoid(np.dot(layer_1_test, synapse_1))
-    count += int(0.6 < layer_2_test)
-        
+    print('try {} gives estimate {} for {}'.format(p,layer_2_test, test[0,0]))
+    if test[0,0] == 1:
+        count += int(0.6 < layer_2_test)
+    else:
+        count += int(0.4 > layer_2_test)
+
+    
 print(count/100)
 #    
 #print('synapse_0:')

@@ -25,13 +25,8 @@ def grad(output1, output2, w2, data):
 #synapse_0 = 2*np.random.random((dim_in,hidden_dim)) -1 
 #synapse_1 = 2*np.random.random((hidden_dim, 1)) - 1
 
-#
-#synapse_0 = -np.zeros((dim_in,hidden_dim))
-#synapse_1 = -np.zeros((hidden_dim, 1))
-#
-#print('starting synapses')
-#print(synapse_0)
-#print(synapse_1)
+
+#nonlinearity_1 = lambda s: 1/(1 + np.exp(-s))
 
 nonlinearity_1 = lambda s: 1/(1 + np.exp(-s))
 
